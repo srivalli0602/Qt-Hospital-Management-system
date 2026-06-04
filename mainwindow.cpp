@@ -98,11 +98,13 @@ void MainWindow::on_searchPatient_clicked()
             ui->lineEditname->setText(p.name);
             ui->spinBoxAge->setValue(p.age);
             QMessageBox::information(this, "Found", "Patient Found");
+            clearFields();
             return;
         }
     }
 
     QMessageBox::warning(this,"Not Found","Patient Not Found");
+
 }
 
 
@@ -141,10 +143,12 @@ void MainWindow::on_modifyPatient_clicked()
             ui->tableWidget->item(i,7)->setText(patients[i].roomNumber);
             ui->tableWidget->item(i,8)->setText(QString::number(patients[i].billAmount));
             QMessageBox::information(this,"Success","Patient Modified Successfully");
+            clearFields();
             return;
         }
     }
     QMessageBox::warning(this,"Error","Patient ID Not Found");
+
 }
 
 void MainWindow::on_deletepatient_clicked()
@@ -193,6 +197,7 @@ void MainWindow::on_LoadData_clicked()
         ui->tableWidget->setItem(row,8,new QTableWidgetItem(QString::number(p.billAmount)));
     }
     QMessageBox::information(this,"Success","Data Loaded Successfully");
+    clearFields();
 
 }
 
